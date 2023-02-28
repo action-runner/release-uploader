@@ -37,6 +37,7 @@ export class ReleaseClient {
       });
       core.info("Uploaded assets to release server");
     } catch (e: any) {
+      core.error(`${e}`);
       const error = e as AxiosError;
       throw new Error(`${(error.response?.data as any).detail}`);
     }

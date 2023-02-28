@@ -25,7 +25,7 @@ jobs:
         uses: ./
         with:
           version: ${{ github.event.inputs.version }}
-          endpoint: ${{ secrets.RELEASE_ENDPOINT }}
+          endpoint: ${{ secrets.ENDPOINT }}
           package-name: com.runner.action.release
           assets: ./dist/index.js
           username: ${{ secrets.USERNAME }}

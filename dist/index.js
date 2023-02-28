@@ -76,6 +76,7 @@ class ReleaseClient {
                 core.info("Uploaded assets to release server");
             }
             catch (e) {
+                core.error(`${e}`);
                 const error = e;
                 throw new Error(`${((_a = error.response) === null || _a === void 0 ? void 0 : _a.data).detail}`);
             }
@@ -142,6 +143,15 @@ function application() {
     });
 }
 exports.application = application;
+(() => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield application();
+    }
+    catch (e) {
+        core.error(`${e}`);
+        core.setFailed(`Failed to upload assets to release server.`);
+    }
+}))();
 
 
 /***/ }),

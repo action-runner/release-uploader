@@ -14,3 +14,12 @@ export async function application() {
   const client = new ReleaseClient(endpoint, username, password);
   await client.uploadAssets(packageName, version, assets);
 }
+
+(async () => {
+  try {
+    await application();
+  } catch (e) {
+    core.error(`${e}`);
+    core.setFailed(`Failed to upload assets to release server.`);
+  }
+})();
