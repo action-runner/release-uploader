@@ -1,0 +1,27 @@
+name: "Upload release to release server"
+description: "Will upload the release to the release server"
+branding:
+  icon: align-center
+  color: green
+inputs:
+  version:
+    description: "The release to upload"
+    required: true
+  endpoint:
+    description: "The endpoint to upload to"
+    required: true
+  package-name:
+    description: "The package name"
+    required: true
+  assets:
+    description: "The assets to upload"
+    required: true
+  username:
+    description: "The username to use for authentication"
+    required: true
+  password:
+    description: "The password to use for authentication"
+    required: true
+runs:
+  using: "node16"
+  main: "dist/index.js"
