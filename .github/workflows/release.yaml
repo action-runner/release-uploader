@@ -27,6 +27,6 @@ jobs:
           version: ${{ github.event.inputs.version }}
           endpoint: ${{ secrets.ENDPOINT }}
           package-name: com.runner.action.release
-          assets: ./dist/index.js
+          assets: ./dist/index.js,./dist/index.js.map
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
