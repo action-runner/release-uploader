@@ -1,0 +1,32 @@
+name: Test and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "The version to release"
+        required: true
+        default: "1.0.0"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+      - name: Release
+        uses: ./
+        with:
+          version: ${{ github.event.inputs.version }}
+          endpoint: ${{ secrets.RELEASE_ENDPOINT }}
+          package-name: com.runner.action.release
+          assets: ./dist/index.js
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
