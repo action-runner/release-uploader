@@ -24,8 +24,8 @@
     "form-data": "^4.0.0"
   },
   "scripts": {
-    "test": "jest",
-    "coverage": "jest --coverage",
+    "test": "jest --passWithNoTests",
+    "coverage": "jest --coverage --passWithNoTests",
     "dev": "ts-node src/main.ts",
     "start": "node dist/index.js",
     "prebuild": "tsc",
